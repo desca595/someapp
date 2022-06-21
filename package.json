@@ -10,6 +10,8 @@
     "@types/node": "^16.11.41",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
+    "apisauce": "^2.1.5",
+    "openapi-typescript-fetch": "^1.1.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -17,6 +19,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "swagger": "npx openapi-typescript http://localhost:3000/api-json --output schema.ts",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
