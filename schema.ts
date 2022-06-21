@@ -20,11 +20,11 @@ export interface paths {
 export interface components {
   schemas: {
     CreateUserDto: {
-      name?: string;
+      name: string;
       /** Format: date-time */
-      bithDate?: string;
-      email?: string;
-      phoneNumber?: string;
+      bithDate: string;
+      email: string;
+      phoneNumber: string;
     };
     City: {
       zipCode?: number;
