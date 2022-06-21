@@ -20,11 +20,11 @@ export interface paths {
 export interface components {
   schemas: {
     CreateUserDto: {
-      name: string;
+      name?: string;
       /** Format: date-time */
-      bithDate: string;
-      email: string;
-      phoneNumber: string;
+      bithDate?: string;
+      email?: string;
+      phoneNumber?: string;
     };
     City: {
       zipCode?: number;
@@ -41,6 +41,10 @@ export interface components {
       home?: components["schemas"]["AddressItem"];
       work?: components["schemas"]["AddressItem"];
     };
+    UserError: {
+      /** @enum {string} */
+      error: "INVALID_NAME" | "INVALID_EMAIL";
+    };
   };
 }
 
@@ -54,7 +58,7 @@ export interface operations {
   UsersController_findAll: {
     parameters: {};
     responses: {
-      default: {
+      200: {
         content: {
           "application/json": components["schemas"]["User"][];
         };
@@ -64,7 +68,16 @@ export interface operations {
   UsersController_create: {
     parameters: {};
     responses: {
-      201: unknown;
+      200: {
+        content: {
+          "application/json": components["schemas"]["User"][];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["UserError"];
+        };
+      };
     };
     requestBody: {
       content: {
@@ -79,7 +92,11 @@ export interface operations {
       };
     };
     responses: {
-      200: unknown;
+      200: {
+        content: {
+          "application/json": components["schemas"]["User"][];
+        };
+      };
     };
   };
   UsersController_remove: {
