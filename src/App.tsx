@@ -1,23 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { fetcher } from "./fetcher";
 
 function App() {
+  const onClick = async () => {
+    const updateuser = await fetcher
+      .path("/users/{id}")
+      .method("patch")
+      .create()({
+      id: "12",
+      name: "ok",
+    });
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button onClick={onClick}>Click me</button>
       </header>
     </div>
   );

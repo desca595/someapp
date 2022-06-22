@@ -14,6 +14,7 @@ export interface paths {
   "/users/{id}": {
     get: operations["UsersController_findOne"];
     delete: operations["UsersController_remove"];
+    patch: operations["UsersController_update"];
   };
 }
 
@@ -44,6 +45,15 @@ export interface components {
     UserError: {
       /** @enum {string} */
       error: "INVALID_NAME" | "INVALID_EMAIL";
+    };
+    UpdateUserDto: {
+      name?: string;
+      /** Format: date-time */
+      bithDate?: string;
+      email?: string;
+      phoneNumber?: string;
+      home?: components["schemas"]["AddressItem"];
+      work?: components["schemas"]["AddressItem"];
     };
   };
 }
@@ -107,6 +117,21 @@ export interface operations {
     };
     responses: {
       200: unknown;
+    };
+  };
+  UsersController_update: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      200: unknown;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["UpdateUserDto"];
+      };
     };
   };
 }

@@ -3,5 +3,8 @@ import "whatwg-fetch";
 import { paths } from "../schema";
 
 // declare fetcher for paths
-const fetcher = Fetcher.for<paths>();
-console.info(fetcher);
+export const fetcher = Fetcher.for<paths>();
+
+fetcher.configure({
+  baseUrl: "http://localhost:3000",
+});
