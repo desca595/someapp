@@ -7,11 +7,11 @@ export interface paths {
   "/": {
     get: operations["AppController_getHello"];
   };
-  "/users": {
+  "/premium-users": {
     get: operations["UsersController_findAll"];
     post: operations["UsersController_create"];
   };
-  "/users/{id}": {
+  "/premium-users/{id}": {
     get: operations["UsersController_findOne"];
     delete: operations["UsersController_remove"];
     patch: operations["UsersController_update"];
@@ -21,11 +21,11 @@ export interface paths {
 export interface components {
   schemas: {
     CreateUserDto: {
-      name?: string;
+      name: string;
       /** Format: date-time */
-      bithDate?: string;
-      email?: string;
-      phoneNumber?: string;
+      bithDate: string;
+      email: string;
+      phoneNumber: string;
     };
     City: {
       zipCode?: number;
